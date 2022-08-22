@@ -1,7 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using VoiceSageExample.Data;
+using VoiceSageExample.Factories;
+using VoiceSageExample.Repos;
+
 var builder = WebApplication.CreateBuilder(args);
+//builder.Services.AddDbContext<VoiceSageExampleContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("VoiceSageExampleContext") ?? throw new InvalidOperationException("Connection string 'VoiceSageExampleContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<GroupsRepo>();
+builder.Services.AddSingleton<ContactsRepo>();
+builder.Services.AddSingleton<GroupsToContactMap>();
+builder.Services.AddSingleton<GroupsFactory>();
+builder.Services.AddSingleton<ContactsFactory>();
 
 var app = builder.Build();
 

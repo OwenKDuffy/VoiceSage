@@ -5,5 +5,9 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    @Html.Partial("_List")
+    <div>
+        <a asp-controller="Groups" asp-action="Index">View Groups List</a>
+        <br />
+        <a asp-controller="Contacts" asp-action="Index">View Contacts List</a>
+    </div>
 </div>
